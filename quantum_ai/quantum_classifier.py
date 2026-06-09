@@ -29,11 +29,7 @@ class QuantumClassifier:
         self.n_classes = n_classes
         self.is_trained = False
     
-    def fit(
-        self,
-        X: np.ndarray,
-        y: np.ndarray
-    ) -> None:
+    def fit(self, X: np.ndarray, y: np.ndarray) -> None:
         """
         تدريب المصنف
         

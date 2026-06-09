@@ -37,7 +37,6 @@ class TestQuantumCircuit:
         """اختبار القياس"""
         self.qc.add_h_gate(0)
         results = self.qc.measure(shots=100)
-        
         assert isinstance(results, dict)
         assert sum(results.values()) == 100
 

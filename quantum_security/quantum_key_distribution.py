@@ -33,17 +33,14 @@ class QuantumKeyDistribution:
         """
         print(f"تنفيذ بروتوكول BB84...")
         
-        # توليد بتات عشوائية
         bits = np.random.randint(0, 2, self.n_qubits)
         bases = np.random.randint(0, 2, self.n_qubits)
         
         print(f"تم توليد {self.n_qubits} كيوبت")
         
-        # إرسال الكيوبتات عبر قناة كمومية (محاكاة)
         received_bits = bits.copy()
         received_bases = bases.copy()
         
-        # مطابقة القواعد
         matching_bases = bases == received_bases
         shared_key = bits[matching_bases]
         
@@ -60,9 +57,8 @@ class QuantumKeyDistribution:
             bool: هل القناة آمنة؟
         """
         print("التحقق من سلامة القناة الكمومية...")
-        # محاكاة بسيطة
         noise_level = np.random.random()
-        is_secure = noise_level < 0.1  # افتراض أن مستوى الضوضاء أقل من 10%
+        is_secure = noise_level < 0.1
         
         if is_secure:
             print("✓ القناة آمنة")

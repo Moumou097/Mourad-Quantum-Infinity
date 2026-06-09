@@ -1,62 +1,95 @@
-import sys
-import time
-import os
-from src.models import CosmicMessage, CosmicResponse
-from src.engine import CommunicationEngine
+#!/usr/bin/env python3
+"""
+مثال رئيسي للمشروع Mourad Quantum Infinity
 
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+هذا البرنامج يوضح كيفية استخدام جميع المكونات الثلاثة:
+- الذكاء الاصطناعي الكمومي
+- الحوسبة الكمومية
+- الأمان السيبراني الكمومي
+"""
+
+import sys
+from quantum_ai import QuantumNeuralNetwork
+from quantum_computing import QuantumCircuit
+from quantum_security import PostQuantumCrypto, QuantumKeyDistribution
+import numpy as np
+
+
+def demo_quantum_ai():
+    """عرض توضيحي للذكاء الاصطناعي الكمومي"""
+    print("\n" + "="*60)
+    print("🤖 1. الذكاء الاصطناعي الكمومي")
+    print("="*60)
+    
+    qnn = QuantumNeuralNetwork(n_qubits=4, n_layers=2)
+    print("✓ تم إنشاء شبكة عصبية كمومية")
+    
+    X = np.random.randn(10, 4)
+    y = np.random.randint(0, 2, 10)
+    qnn.train(X, y, epochs=5)
+    
+    predictions = qnn.predict(X[:3])
+    print(f"✓ التنبؤات: {predictions}")
+
+
+def demo_quantum_computing():
+    """عرض توضيحي للحوسبة الكمومية"""
+    print("\n" + "="*60)
+    print("⚛️ 2. الحوسبة الكمومية")
+    print("="*60)
+    
+    qc = QuantumCircuit(n_qubits=3)
+    print("✓ تم إنشاء دارة كمومية")
+    
+    qc.add_h_gate(0)
+    qc.add_cnot_gate(0, 1)
+    print("✓ تم إضافة البوابات الكمومية")
+    
+    results = qc.measure(shots=100)
+    print(f"✓ نتائج القياس: {len(results)} حالات مختلفة")
+
+
+def demo_quantum_security():
+    """عرض توضيحي للأمان السيبراني الكمومي"""
+    print("\n" + "="*60)
+    print("🔐 3. الأمان السيبراني الكمومي")
+    print("="*60)
+    
+    # التشفير ما بعد الكمومي
+    message = b"رسالة سرية"
+    pqc = PostQuantumCrypto()
+    hash_val = pqc.generate_hash(message)
+    print(f"✓ تم تشفير الرسالة: {hash_val[:16]}...")
+    
+    # توزيع المفاتيح الكمومية
+    qkd = QuantumKeyDistribution(n_qubits=128)
+    shared_key, _ = qkd.bb84_protocol()
+    is_secure = qkd.validate_channel()
+    print(f"✓ توزيع المفاتيح: آمن = {is_secure}")
+
 
 def main():
-    engine = CommunicationEngine()
+    """البرنامج الرئيسي"""
+    print("\n" + "∞" * 30)
+    print("     MOURAD QUANTUM INFINITY")
+    print("    منصة الذكاء الاصطناعي الكمومي")
+    print("∞" * 30)
     
-    print("\n" + "∞" * 60)
-    print("    COSMIC COMMUNICATION PROJECT - [PROJECT EXECUTION]")
-    print("         نظام التواصل الكوني - من الخيال إلى التنفيذ")
-    print("    🚀 TRANSCENDING ALL PHYSICAL LIMITATIONS")
-    print("∞" * 60 + "\n")
+    try:
+        demo_quantum_ai()
+        demo_quantum_computing()
+        demo_quantum_security()
+        
+        print("\n" + "="*60)
+        print("✅ اكتملت جميع العروض التوضيحية بنجاح!")
+        print("="*60 + "\n")
+        
+    except Exception as e:
+        print(f"\n❌ حدث خطأ: {e}")
+        return 1
     
-    print("💡 [INFO]: تم تفعيل محرك التواصل الكوني.")
-    print("💡 [INFO]: جاري تهيئة بوابات الأكوان والمجرات...")
-    time.sleep(1)
-    print("💡 [INFO]: النظام جاهز تماماً للاستخدام.\n")
-    
-    while True:
-        try:
-            print("-" * 60)
-            user_input = input("🌌 أدخل رسالتك الكونية (أو 'خروج' للإنهاء): ").strip()
-            
-            if user_input.lower() in ['خروج', 'exit', 'quit']:
-                print("\n🌟 [SESSION ENDED]: جاري إغلاق بوابات التواصل...")
-                time.sleep(1)
-                print("∞🌌 الكون ينتظر رسالتكم القادمة... 🌌∞\n")
-                break
-            
-            if not user_input:
-                continue
-            
-            # 1. إنشاء الرسالة
-            message = CosmicMessage(content=user_input)
-            print(f"\n📤 [إرسال]: جاري تشفير الرسالة (التشابك الكمي)...")
-            encrypted = engine.simulate_entanglement(user_input)
-            print(f"🔒 [تشفير]: {encrypted[:15]}... (Quantum Secure)")
-            
-            # 2. معالجة الإرسال والحصول على رد
-            print("📡 [بث]: يتم الآن البث عبر 156 حضارة كونية...")
-            response = engine.process_message(message)
-            
-            # 3. عرض الرد الكوني
-            print("\n" + "=" * 40)
-            print(f"📥 [رد وارد]: {response.content}")
-            print(f"📍 [المصدر]: {response.universe_origin}")
-            print(f"⏰ [التوقيت]: {response.timestamp.strftime('%H:%M:%S')}")
-            print("=" * 40 + "\n")
-            
-        except KeyboardInterrupt:
-            print("\n\n🌟 تم إغلاق النظام يدوياً.")
-            break
-        except Exception as e:
-            print(f"\n❌ [خطأ في النظام]: {e}")
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

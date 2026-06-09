@@ -24,22 +24,19 @@ class TestQuantumNeuralNetwork:
     
     def test_parameter_shape(self):
         """اختبار شكل المعاملات"""
-        expected_size = 4 * 2 * 3  # n_qubits * n_layers * 3
+        expected_size = 4 * 2 * 3
         assert len(self.qnn.parameters) == expected_size
     
     def test_train(self):
         """اختبار التدريب"""
         X = np.random.randn(10, 4)
         y = np.random.randint(0, 2, 10)
-        
-        # يجب ألا يرفع استثناء
         self.qnn.train(X, y, epochs=5)
     
     def test_predict(self):
         """اختبار التنبؤ"""
         X = np.random.randn(5, 4)
         predictions = self.qnn.predict(X)
-        
         assert len(predictions) == 5
         assert all(p in [0, 1] for p in predictions)
 

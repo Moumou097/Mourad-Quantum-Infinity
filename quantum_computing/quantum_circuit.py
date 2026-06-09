@@ -35,7 +35,6 @@ class QuantumCircuit:
         Returns:
             np.ndarray: حالة الكيوبتات الأولية
         """
-        # الحالة الأولية: جميع الكيوبتات في حالة |0>
         state = np.zeros(2**self.n_qubits)
         state[0] = 1.0
         return state

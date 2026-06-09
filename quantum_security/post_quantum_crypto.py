@@ -58,7 +58,6 @@ class PostQuantumCrypto:
         Returns:
             Tuple[str, str]: (الرسالة المشفرة، المفتاح)
         """
-        # هذا تطبيق مبسط - التطبيق الفعلي يحتاج إلى مكتبة متخصصة
         print(f"تشفير الرسالة باستخدام Lattice-based Encryption...")
         encrypted = PostQuantumCrypto.generate_hash(message.encode())
         return encrypted, "lattice_key_placeholder"

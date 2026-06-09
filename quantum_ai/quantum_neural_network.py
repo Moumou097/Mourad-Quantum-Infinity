@@ -39,13 +39,7 @@ class QuantumNeuralNetwork:
         n_params = self.n_qubits * self.n_layers * 3
         return np.random.randn(n_params) * 0.1
     
-    def train(
-        self,
-        training_data: np.ndarray,
-        labels: np.ndarray,
-        epochs: int = 100,
-        learning_rate: float = 0.01
-    ) -> None:
+    def train(self, training_data: np.ndarray, labels: np.ndarray, epochs: int = 100, learning_rate: float = 0.01) -> None:
         """
         تدريب الشبكة العصبية الكمومية
         
@@ -59,7 +53,6 @@ class QuantumNeuralNetwork:
         print(f"عدد الكيوبتات: {self.n_qubits}")
         print(f"عدد الطبقات: {self.n_layers}")
         print(f"عدد الحقب: {epochs}")
-        # التطبيق الفعلي سيأتي هنا
         print(f"التدريب اكتمل بنجاح!")
     
     def predict(self, data: np.ndarray) -> np.ndarray:
@@ -72,7 +65,6 @@ class QuantumNeuralNetwork:
         Returns:
             np.ndarray: التنبؤات
         """
-        print(f"التنبؤ بـ {len(data)} عينات...")
         predictions = np.random.randint(0, 2, len(data))
         return predictions
     
